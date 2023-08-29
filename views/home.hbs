@@ -1,0 +1,81 @@
+{{#if dataAvailable}}
+  <section class="content-section">
+    <div class="container-fluid responsive-table">
+      <form
+        class="d-flex row row-cols-lg-auto"
+        role="search"
+        action="/search"
+        method="POST"
+      >
+        <input
+          class="form-control"
+          type="text"
+          name="animeName"
+          placeholder="Buscar Anime"
+          aria-label="Search"
+          autocomplete="off"
+          required
+          autofocus
+        />
+        <button class="btn btn-dark" type="submit">Buscar</button>
+      </form>
+      <table class="table align-middle striped-table">
+        <thead>
+          <th scope="col">ID</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Género</th>
+          <th scope="col">Año</th>
+          <th scope="col">Creador</th>
+          <th scope="col"> </th>
+        </thead>
+        <tbody>
+          {{#each animeList}}
+            <tr>
+              <td>
+                <a class="btn" href="/{{@key}}" type="button">
+                  {{@key}}</a>
+              </td>
+              <td>{{this.name}}</td>
+              <td>{{this.genre}}</td>
+              <td>{{this.year}}</td>
+              <td>{{this.author}}</td>
+              <td>
+                <a
+                  class="btn"
+                  href="/delete/{{@key}}"
+                  onclick="return confirm('¿Estás seguro de eliminar este anime?');"
+                  type="button"
+                >
+                  <i class="bi bi-trash"></i></a>
+                <a class="btn" href="/update/{{@key}}" type="button">
+                  <i class="bi bi-pencil"></i></a>
+              </td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+    <a class="btn btn-dark" href="/create" type="button">
+      Añadir Nuevo</a>
+  </section>
+{{else}}
+  <table class="table align-middle striped-table">
+    <thead>
+      <th scope="col">Nombre</th>
+      <th scope="col">Género</th>
+      <th scope="col">Año</th>
+      <th scope="col">Creador</th>
+    </thead>
+    <tbody>
+      {{#with animeList}}
+        <tr>
+          <td>{{this.data.name}}</td>
+          <td>{{this.data.genre}}</td>
+          <td>{{this.data.year}}</td>
+          <td>{{this.data.author}}</td>
+        </tr>
+      {{/with}}
+    </tbody>
+  </table>
+  <a class="btn btn-dark" href="/" type="button"> Volver</a>
+{{/if}}

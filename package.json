@@ -1,0 +1,25 @@
+{
+  "name": "anime",
+  "version": "1.0.0",
+  "description": "Local Json CRUD",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "dev-unix": "./node_modules/.bin/nodemon --ignore '*.json'",
+    "dev-win": "node_modules\\.bin\\nodemon.cmd --ignore '*.json'"
+  
+  },
+  "dependencies": {
+    "chai": "^4.3.7",
+    "chai-http": "^4.4.0",
+    "express": "^4.18.2",
+    "express-handlebars": "^7.0.7",
+    "fs": "^0.0.1-security",
+    "handlebars": "^4.7.7",
+    "handlebars-helpers": "^0.10.0",
+    "jquery": "^3.7.0",
+    "lodash": "^4.17.21",
+    "mocha": "^10.2.0",
+    "nodemon": "^2.0.22"
+  }
+}
